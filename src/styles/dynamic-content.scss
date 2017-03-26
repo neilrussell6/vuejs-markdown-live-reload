@@ -1,0 +1,83 @@
+@import './app-vars';
+
+// ----------------------------------
+// structure
+// ----------------------------------
+
+.body {
+
+    @media screen and (min-width: $breakpoint-sm) {
+        padding-right: $med-h-pad * 2;
+    }
+
+    .aside {
+
+        @media screen and (min-width: $breakpoint-sm) {
+            min-width: $aside-1-width-sm;
+        }
+
+        @media screen and (min-width: $breakpoint-md) {
+            min-width: $aside-1-width-md;
+        }
+
+        @media screen and (min-width: $breakpoint-lg) {
+            min-width: $aside-1-width-lg;
+        }
+    }
+
+    .main {
+        position: relative;
+
+        // the following flex: 1 100% is not working with overflow auto child elements
+        // so the calc approaches are work arounds
+        //flex: 1 100%;
+
+        @media screen and (min-width: $breakpoint-sm) {
+            width: calc(100% - #{$aside-1-width-sm});
+        }
+
+        @media screen and (min-width: $breakpoint-md) {
+            width: calc(100% - #{$aside-1-width-md});
+        }
+
+        @media screen and (min-width: $breakpoint-lg) {
+            width: calc(100% - #{$aside-1-width-lg});
+        }
+
+        > .content {
+            padding: $med-v-pad $med-h-pad $med-v-pad $big-h-pad;
+
+            @media screen and (min-width: $breakpoint-lg) {
+                padding: $med-v-pad $big-h-pad $med-v-pad $xbig-h-pad;
+            }
+        }
+
+        > svg {
+            position: absolute;
+            z-index: -999;
+        }
+
+        > .svg-placeholder {
+            background-color: #393b3f;
+            box-shadow: rgba(#393b3f, .5) 10px 10px 0;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            z-index: -999;
+        }
+    }
+}
+
+// ----------------------------------
+// jagged-box-bg
+// ----------------------------------
+
+.jagged-box-bg {
+
+    display: none;
+
+    @media screen and (min-width: $breakpoint-sm) {
+
+        display: block;
+    }
+}

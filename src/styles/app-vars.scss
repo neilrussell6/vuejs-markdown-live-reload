@@ -1,0 +1,97 @@
+// --------------------------
+// structure
+// --------------------------
+
+$small-v-pad: 5px;
+$small-h-pad: 10px;
+
+$med-v-pad: 10px;
+$med-h-pad: 20px;
+
+$big-v-pad: 20px;
+$big-h-pad: 40px;
+
+$xbig-v-pad: 40px;
+$xbig-h-pad: 60px;
+
+// structure: breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 1040px;
+$breakpoint-lg: 1400px;
+
+// structure: asides
+$aside-1-width-sm: 260px;
+$aside-1-width-md: 280px;
+$aside-1-width-lg: 300px;
+
+// --------------------------
+// palette
+// --------------------------
+
+$black: #111;
+$dark-grey: #3c3d40;
+$med-grey: #636469;
+$med-grey2: #45484d;
+$light-grey: #7c7f87;
+$light-grey2: #d8dce3;
+
+$light-red: #ff1414;
+$lighter-red: lighten(#ff1414, 10%);
+$dark-red: #4d0000;
+$red: lighten($dark-red, 10%);
+$darker-red: darken($dark-red, 5%);
+
+$light-blue: #9cc1db;
+$blue: darken($light-blue, 20%);
+$lighter-blue: #a8dbff;
+
+$light-green: #cf9;
+$green: darken($light-green, 20%);
+$light-yellow: #e8d9ae;
+$yellow: darken($light-yellow, 20%);
+$light-red: #e8b6ae;
+$red: darken($light-red, 20%);
+
+// --------------------------
+// common areas & elements
+// --------------------------
+
+// bg
+$bg-color-dark: $dark-grey;
+$bg-color-med: $med-grey2;
+
+// bdr
+$bdr-color-dark: $dark-grey;
+$bdr-color-light: $light-grey;
+
+// text
+$text-color-dark: $dark-grey;
+$text-color-med: $med-grey;
+
+// text
+$heading-color-light: $light-yellow;
+$heading-color-dark: $dark-grey;
+
+// link
+$link-color: darken(desaturate($light-green, 60%), 10%);
+$link-color-hover: $light-green;
+$link-color-selected: $red;
+$link-icon-color: $dark-red;
+$link-icon-color-hover: #000;
+
+// form
+$input-bg-color: $black;
+$input-text-color: $light-grey2;
+$input-text-color-focus: $light-green;
+
+// players
+$player1-color: #adff2f;
+$player2-color: #0ff;
+$player3-color: #eaadff;
+$player4-color: #ffe0a6;
+
+// --------------------------
+// nav
+// --------------------------
+
+$nav-icon-width: 20px;
