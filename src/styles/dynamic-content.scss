@@ -52,10 +52,10 @@
             }
         }
 
-        > svg {
-            position: absolute;
-            z-index: -999;
-        }
+        //> svg {
+        //    position: absolute;
+        //    z-index: -999;
+        //}
 
         > .svg-placeholder {
             background-color: #393b3f;
@@ -72,12 +72,12 @@
 // jagged-box-bg
 // ----------------------------------
 
-.jagged-box-bg {
-
-    display: none;
-
-    @media screen and (min-width: $breakpoint-sm) {
-
-        display: block;
-    }
-}
+//.jagged-box-bg {
+//
+//    display: none;
+//
+//    @media screen and (min-width: $breakpoint-sm) {
+//
+//        display: block;
+//    }
+//}

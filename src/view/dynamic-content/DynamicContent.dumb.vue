@@ -5,8 +5,20 @@
         <aside class="aside aside-1">
 
             <ul class="nav">
+
                 <li v-for="item in menu" class="nav-item">
                     <router-link :to="item.to">{{item.label}}</router-link>
+
+                    <template v-if="item.hasOwnProperty('items')">
+
+                        <ul class="nav">
+                            <li v-for="subitem in item.items" class="nav-item">
+                                <router-link :to="subitem.to">{{subitem.label}}</router-link>
+                            </li>
+                        </ul>
+
+                    </template>
+
                 </li>
             </ul>
 
@@ -15,9 +27,8 @@
         <main class="main">
 
             <div class="svg-placeholder"></div>
-            <!--<jagged-box-bg class="jagged-box-bg"></jagged-box-bg>-->
 
-            <div class="content">
+            <div class="content content-main">
                 <router-view></router-view>
             </div>
 
@@ -32,31 +43,28 @@
     // data
     import * as templates from 'data/content/template-map';
 
-    // view
-    import JaggedBoxBg from '../jagged-box-bg/JaggedBoxBg.dumb';
-
-    function formatLinkKey (key) {
-        return key.replace(/\_\_/g, "/").replace(/\_/g, "-");
-    }
-
-    const menu = Object.keys(templates).map(key => {
-        return { to: `/${formatLinkKey(key)}`, label: templates[ key ].label };
-    });
+    // utils
+    import * as menu_utils from 'utils/menu.utils';
 
     // ----------------------------
     // VueJS
     // ----------------------------
 
-    export default {
+    let _menu = menu_utils.formatMenu(templates);
 
-        components: {
-            JaggedBoxBg
-        },
+    export default {
 
         data: function () {
             return {
-                menu
+                menu: _menu,
+                selected_item: null
             };
+        },
+
+        methods: {
+            onSelect (link) {
+                this.selected_item = link;
+            }
         }
     };
 </script>

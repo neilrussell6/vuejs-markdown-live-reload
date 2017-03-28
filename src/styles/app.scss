@@ -58,7 +58,7 @@ h3 {
 h1,
 h2 {
     color: $heading-color-light;
-    text-shadow: rgba($light-yellow, .2) 0 10px 10px;
+    text-shadow: rgba($light-yellow, .15) 0 10px 10px;
 }
 
 .highlight {
@@ -205,6 +205,14 @@ input {
         }
     }
 
+    .body > .main > .content.content-main {
+        padding-top: 0;
+
+        h1:first-child {
+            //margin-top: 0;
+        }
+    }
+
     .aside-1 {
         order: 1;
     }
@@ -226,7 +234,12 @@ input {
 .aside-1 .nav {
     list-style: none;
     padding: 0;
+    margin: 0;
     width: 100%;
+
+    .nav {
+        padding-left: $med-h-pad;
+    }
 
     .nav-item a {
         cursor: pointer;
@@ -239,9 +252,9 @@ input {
 
     .nav-item .router-link-active {
         color: desaturate($light-yellow, 30%);
-        cursor: default;
+        //cursor: default;
         padding-left: $nav-icon-width + $med-h-pad;
-        pointer-events: none;
+        //pointer-events: none;
         position: relative;
         transition: color 0s linear, padding-left 0s linear;
 
@@ -250,6 +263,10 @@ input {
             font-family: fontawesome;
             margin-left: -$nav-icon-width;
             position: absolute;
+        }
+
+        li {
+            padding: 0;
         }
     }
 }
@@ -326,7 +343,7 @@ input {
 pre {
     background-color: rgba(#000, .1);
     border: 1px solid rgba($light-yellow, .1);
-    box-shadow: 0 0 15px rgba($light-yellow, .05), inset 0 0 25px rgba(#000, .1);
+    //box-shadow: 0 0 15px rgba($light-yellow, .05), inset 0 0 25px rgba(#000, .1);
     line-height: 1.3em;
 
     .hljs {

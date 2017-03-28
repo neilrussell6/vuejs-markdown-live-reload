@@ -9,7 +9,7 @@ $btn-hover-text-color: ligthen($btn-text-color, 10%);
     border: 32px dashed $highlight-color;
 
     .btn {
-        font-size: 641px;
+        font-size: 64px;
         color: $btn-text-color;
 
         &:hover {
@@ -50,4 +50,4 @@ while :; do
 done
 ```
 
-@[codepen](qrMaWV)
+@[codepen](YNpWQL)
