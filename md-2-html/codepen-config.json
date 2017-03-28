@@ -1,11 +1,11 @@
 {
-    "iframe": true,
-    "height": "265",
-    "theme_id": "dark",
-    "default_tab": "js,result",
-    "user": "neilrussell6",
-    "user_name": "Neil Russell",
-    "embed_version": "2",
-    "class": "codepen",
-    "placeholder": "See the Pen <a href=\"https://codepen.io/${user}/pen/${slug_hash}/\">${pen_title}</a> by ${user_name} (<a href=\"http://codepen.io/${user}\">@${user}</a>) on <a href=\"http://codepen.io\">CodePen</a>."
+  "class": "codepen",
+  "default_tab": "js,result",
+  "embed_version": "2",
+  "height": "265",
+  "iframe": true,
+  "placeholder": "See the Pen <a href=\"https://codepen.io/${user}/pen/${slug_hash}/\">${pen_title}</a> by ${user_name} (<a href=\"http://codepen.io/${user}\">@${user}</a>) on <a href=\"http://codepen.io\">CodePen</a>.",
+  "theme_id": "dark",
+  "user": "neilrussell6",
+  "user_name": "Neil Russell"
 }

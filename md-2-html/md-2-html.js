@@ -9,7 +9,8 @@ const MD_2_HTML_CONFIG = require('./md-2-html-config.json');
 const MARKDOWN_IT_CONFIG = require('./markdown-it-config.json');
 
 const _markdownit = markdownit(MARKDOWN_IT_CONFIG)
-    .use(require('./markdown-it-code-embed/index'), CODEPEN_CONFIG)
+    .use(require('markdown-it-code-embed'), CODEPEN_CONFIG)
+    // .use(require('./markdown-it-code-embed/index'), CODEPEN_CONFIG)
     .use(require('markdown-it-highlightjs'));
 
 function md2Html (src_path, src_dir, dest_dir) {
@@ -21,7 +22,7 @@ function md2Html (src_path, src_dir, dest_dir) {
     let _src_path = path.format(Object.assign({}, _path, {
         dir: _path.dir.replace('./', '')
     }));
-    let _dest_path = path.format(Object.assign({}, _path, { 
+    let _dest_path = path.format(Object.assign({}, _path, {
         dir: path.join(dest_dir, _path.dir.replace(src_dir, '')),
         base: _path.name + '.html'
     }));

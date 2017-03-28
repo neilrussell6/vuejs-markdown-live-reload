@@ -7,14 +7,14 @@ $btn-text-color: saturate(blue, 15%);
 $btn-hover-text-color: ligthen($btn-text-color, 10%);
 .eye-catching {
     border: 32px dashed $highlight-color;
-    
+
     .btn {
         font-size: 641px;
         color: $btn-text-color;
-        
+
         &:hover {
             color: $btn-hover-text-color;
-        }        
+        }
     }
 }
 ```
@@ -50,4 +50,4 @@ while :; do
 done
 ```
 
-@[codepen](YNpWQL)
+@[codepen](qrMaWV)

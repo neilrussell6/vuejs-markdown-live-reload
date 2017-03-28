@@ -70,6 +70,9 @@ endef
 # help
 #------------------------------
 
+HELP_BUILD_MD_MESSAGE = "Converts to markdown to HTML, and generates template-map.js."
+HELP_BUILD_MD_W_MESSAGE = "Converts to markdown to HTML, generates template-map.js and watches files for change."
+
 help:
 	@$(call echo_help, "todo", "Lists all TODOs in source JavaScript.")
 	@$(call echo_help, "jslint", "Lints source JavaScript.")
@@ -81,8 +84,8 @@ help:
 	@$(call echo_help, "coverage", "Generates a testing coverage report for source JavaScript.")
 	@$(call echo_help, "serve", "Runs webpack-dev-server with live reloading.")
 	@$(call echo_help, "build", "Creates a production build for distribution and copies assets directory.")
-	@$(call echo_help, "build-md", "Converts to markdown to HTML, and generates template-map.js.")
-	@$(call echo_help, "build-md-w", "Converts to markdown to HTML, generates template-map.js and watches files for change.")
+	@$(call echo_help, "build-md", $(HELP_BUILD_MD_MESSAGE))
+	@$(call echo_help, "build-md-w", $(HELP_BUILD_MD_W_MESSAGE))
 	@$(call echo_help, "push", "Pushes local repository to GitHub.")
 	@$(call echo_help, "publish", "Creates a new annotated GitHub tag and pushes release.", "MESSAGE")
 
@@ -141,9 +144,9 @@ test-w: jslint
 #------------------------------
 
 coverage: jslint
-	@rm -rf "$(DIR_COVERAGE)"
-		@NODE_PATH="$(DIR_SRC)" babel-node "$(DIR_BIN)/"babel-istanbul cover --root "$(DIR_SRC)" "$(DIR_BIN)/"_mocha -- "$(FILES_TEST)" -R dot --compilers js:babel-register,css:ignore-import ; exit 0
-		@google-chrome "$$(pwd)/coverage/lcov-report/index.html"
+	rm -rf "$(DIR_COVERAGE)"
+	NODE_PATH="$(DIR_SRC)" babel-node "$(DIR_BIN)/"babel-istanbul cover --root "$(DIR_SRC)" "$(DIR_BIN)/"_mocha -- "$(FILES_TEST)" -R dot --compilers js:babel-register,css:ignore-import ; exit 0
+	google-chrome "$$(pwd)/coverage/lcov-report/index.html"
 
 #------------------------------
 # report-coverage
