@@ -10,10 +10,10 @@ describe("Menu Utils", () => {
         it("should return a collection with to and label keys", () => {
 
             const _templates = {
-            	code_examples: { template: "<div>html...</div>", label: "Code examples" },
-            	sub_dir__index: { template: "<div>html...</div>", label: "Index" },
-            	sub_dir__sub_page1: { template: "<div>html...</div>", label: "Sub page 1" },
-            	sub_dir__sub_page2: { template: "<div>html...</div>", label: "Sub page 2" }
+                code_examples: { template: "<div>html...</div>", label: "Code examples" },
+                sub_dir__index: { template: "<div>html...</div>", label: "Index" },
+                sub_dir__sub_page1: { template: "<div>html...</div>", label: "Sub page 1" },
+                sub_dir__sub_page2: { template: "<div>html...</div>", label: "Sub page 2" }
             };
 
             deepFreeze(_templates);
@@ -35,6 +35,28 @@ describe("Menu Utils", () => {
             expect(_result[1].items[1]).to.have.property('to', '/sub-dir/sub-page2');
             expect(_result[1].items[1]).to.have.property('label', 'Sub page 2');
             expect(_result[1].items[1]).to.not.have.property('items');
+        });
+    });
+
+    describe("sortMenu", () => {
+
+        it("should sort menu according to provided order, by specified property, with specified items preceding unspecified items", () => {
+
+            const _menu = [
+                { abc: '/aaa' },
+                { abc: '/bbb' },
+                { abc: '/ccc/ddd' }
+            ];
+            const _menu_order = [ '/bbb', '/aaa' ];
+
+            deepFreeze(_menu);
+            deepFreeze(_menu_order);
+
+            let _result = utils.sortMenu(_menu, 'abc', _menu_order);
+
+            expect(_result[0].abc).to.equal('/bbb');
+            expect(_result[1].abc).to.equal('/aaa');
+            expect(_result[2].abc).to.equal('/ccc/ddd');
         });
     });
 });

@@ -34,6 +34,21 @@ export function formatMenu (templates) {
     });
 }
 
+export function sortMenu (menu, prop, order) {
+
+    return [ ...menu ].sort((a, b) => {
+
+        const _a_i = order.indexOf(a[ prop ]);
+        const _b_i = order.indexOf(b[ prop ]);
+
+        if (_a_i === -1 || _b_i === -1) {
+            return 0;
+        }
+
+        return _a_i - _b_i;
+    });
+}
+
 // --------------------------
 // private
 // --------------------------

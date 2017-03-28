@@ -4,6 +4,7 @@ import getopt
 import os
 import sys
 import argparse
+import logging
 
 #--------------------
 # utils
@@ -43,6 +44,7 @@ def main(args):
     # get path list
     path_list = []
     for root, subdirs, files in os.walk(args.src):
+        files.sort()
         filtered_paths = list(filter(lambda file: file.endswith(args.ext), files))
         path_list += list(map(lambda filename: os.path.join(root, filename), filtered_paths))
 

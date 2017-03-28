@@ -50,7 +50,11 @@
     // VueJS
     // ----------------------------
 
-    let _menu = menu_utils.formatMenu(templates);
+    const _menu_order = [
+        '/index',
+        '/code-examples'
+    ];
+    const _menu = menu_utils.sortMenu(menu_utils.formatMenu(templates), 'to', _menu_order);
 
     export default {
 
