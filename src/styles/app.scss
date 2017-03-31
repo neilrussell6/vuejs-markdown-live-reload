@@ -2,6 +2,10 @@ $fa-font-path: '~font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome';
 @import './app-vars';
 
+* {
+    box-sizing: border-box;
+}
+
 // ----------------------------------
 // misc
 // ----------------------------------
@@ -28,8 +32,8 @@ html,
 }
 
 body {
-    background-color: #242528;//$bg-color-dark;
-    color: #d8dce3;
+    background-color: $bg-color-dark;
+    color: $text-color-light;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -38,27 +42,52 @@ body {
 body,
 div,
 table,
+li,
 p,
 input,
 button {
-    font-family: 'TlwgTypewriter', serif;
-    font-size: 16px;
-    font-smoothing: antialiased;
+    font-family: "Liberation Mono", Verdana, sans-serif;
+    letter-spacing: 0.1em;
+    line-height: 1.4em;
+    font-size: 15px;
 }
 
-h3 {
-    background-color: #000;
-    box-shadow: rgba(#000, .1) 10px 10px 0;
-    color: $dark-grey;
+// ----------------------------------
+// typography
+// ----------------------------------
+
+.logo {
+    font-size: 18px;
+    font-family: "Courier New";
+    color: $light-green;
+    text-shadow: rgba(lighten($light-green, 10%), 0.3) 0 6px 8px;
     display: inline-block;
-    margin: 0 -20px 20px;
-    padding: 0 20px;
+
+    i {
+        font-size: 14px;
+        color: lighten($light-blue, 2%);
+        text-shadow: rgba(lighten($light-blue, 30%), 0.7) 0 0 12px;
+    }
+
+    .secondary {
+        font-size: .9em;
+        font-family: "Droid Sans", "Trebuchet MS";
+        color: lighten($light-blue, 2%);
+        text-shadow: rgba(lighten($light-blue, 10%), 0.3) 0 6px 8px;
+    }
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
+    font-family: "Droid Sans", "Trebuchet MS";
     color: $heading-color-light;
-    text-shadow: rgba($light-yellow, .15) 0 10px 10px;
+    text-shadow: rgba($light-yellow, .1) 0 10px 10px;
+}
+h3,
+h4 {
+    color: $light-blue;
 }
 
 .highlight {
@@ -158,6 +187,48 @@ input {
 // structure
 // ----------------------------------
 
+.header {
+    margin-bottom: $big-h-pad;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &.content-wrapper {
+        //background-color: rgba(darken(desaturate($blue, 35%), 15%), .8);
+        background-color: rgba(darken($bg-color-med, 6%), .8);
+        position: relative;
+        width: 100%;
+
+        > .content {
+            border-bottom: 1px solid rgba($light-green, .15);
+            margin: 0 0 $small-h-pad;
+            padding: $med-h-pad;
+            width: 100%;
+        }
+    }
+
+    &:after {
+        content: '';
+        background: repeating-linear-gradient(
+            135deg,
+            rgba(darken($bg-color-dark, 13%), .06),
+            rgba(darken($bg-color-dark, 13%), .06) 10px,
+            rgba(darken($bg-color-dark, 5%), .06) 10px,
+            rgba(darken($bg-color-dark, 5%), .06) 20px
+        );
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: -$med-h-pad;
+        z-index: -1;
+    }
+
+    h3 {
+        margin: 0;
+    }
+}
+
 .page {
     display: flex;
     flex: 1;
@@ -178,15 +249,46 @@ input {
         justify-content: center;
     }
 
-    .content {
-        padding: $med-v-pad $small-h-pad;
+    .content-wrapper {
+        //background-color: rgba($bg-color-med, .8);
+        background-color: rgba(darken($bg-color-med, 4%), .8);
+        position: relative;
 
-        @media screen and (min-width: $breakpoint-sm) {
-            padding: $big-v-pad $med-h-pad;
+        &:after {
+            content: '';
+            background: repeating-linear-gradient(
+                135deg,
+                rgba(darken($bg-color-dark, 3%), .2),
+                rgba(darken($bg-color-dark, 3%), .2) 10px,
+                rgba(darken($bg-color-dark, 1%), .2) 10px,
+                rgba(darken($bg-color-dark, 1%), .2) 20px
+            );
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            right: -$med-h-pad;
+            bottom: -$med-h-pad;
+            z-index: -1;
         }
 
-        @media screen and (min-width: $breakpoint-md) {
-            padding: $big-v-pad $big-h-pad;
+        > .content {
+            border: 1px solid rgba($light-green, .2);
+            margin: $small-h-pad;
+            padding: $small-h-pad;
+
+            @media screen and (min-width: $breakpoint-sm) {
+                margin: $small-h-pad;
+                padding: $med-h-pad;
+            }
+
+            @media screen and (min-width: $breakpoint-md) {
+                margin: $small-h-pad;
+                padding: $big-h-pad;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
         }
     }
 
@@ -202,14 +304,6 @@ input {
 
         @media screen and (min-width: $breakpoint-sm) {
             flex-direction: row;
-        }
-    }
-
-    .body > .main > .content.content-main {
-        padding-top: 0;
-
-        h1:first-child {
-            //margin-top: 0;
         }
     }
 
@@ -233,7 +327,7 @@ input {
 
 .aside-1 .nav {
     list-style: none;
-    padding: 0;
+    padding: $small-h-pad 0 0;
     margin: 0;
     width: 100%;
 
@@ -241,12 +335,22 @@ input {
         padding-left: $med-h-pad;
     }
 
+    .nav-item {
+        line-height: 1.2em;
+    }
+
+    .sub-nav .nav-item {
+        line-height: 0.4em;
+    }
+
     .nav-item a {
         cursor: pointer;
         display: block;
-        font-family: consolas, 'Liberation Mono', Menlo, monospace;
-        font-size: 14px;
-        margin: 0 $med-h-pad $small-v-pad;
+        //font-family: consolas, 'Liberation Mono', Menlo, monospace;
+        font-family: "Droid Sans", "Trebuchet MS";
+        letter-spacing: 0.05em;
+        //font-family: 'Liberation Mono', "Comic Sans MS";
+        margin: 0 $med-h-pad;// $small-v-pad;
         padding: $med-v-pad $med-h-pad;
     }
 
@@ -335,6 +439,10 @@ input {
         transition: filter .2s;
     }
 }
+
+// ----------------------------------
+// lists
+// ----------------------------------
 
 // ----------------------------------
 // code

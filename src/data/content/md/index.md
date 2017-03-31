@@ -1,7 +1,7 @@
-Demo Markdown Live Reload
-=========================
+Demo Markdown Live Reload 1
+===========================
 
-#### Section One
+### Section One
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 Ad adipisci corporis et illo, laboriosam nam necessitatibus possimus quae quasi quidem tempora voluptatibus.
@@ -19,3 +19,19 @@ Here's a table:
 | Aye One   | Ai Two    |
 | Bee Won   | Bie Tew   |
 | Sea Wun   | See Too   |
+
+# H1
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+
+## H2
+
+Ad adipisci corporis et illo, laboriosam nam necessitatibus possimus quae quasi quidem tempora voluptatibus.
+
+### H3
+
+Blanditiis distinctio doloremque molestiae nobis quos ratione sunt.
+
+#### H4
+
+Ad adipisci corporis et illo, laboriosam nam necessitatibus possimus quae quasi quidem tempora voluptatibus.

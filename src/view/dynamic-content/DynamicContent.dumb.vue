@@ -11,7 +11,7 @@
 
                     <template v-if="item.hasOwnProperty('items')">
 
-                        <ul class="nav">
+                        <ul class="nav sub-nav">
                             <li v-for="subitem in item.items" class="nav-item">
                                 <router-link :to="subitem.to">{{subitem.label}}</router-link>
                             </li>
@@ -24,14 +24,10 @@
 
         </aside>
 
-        <main class="main">
-
-            <div class="svg-placeholder"></div>
-
+        <main class="main content-wrapper">
             <div class="content content-main">
                 <router-view></router-view>
             </div>
-
         </main>
 
     </div>
