@@ -4,6 +4,16 @@ import * as collection_utils from './collection.utils';
 // public
 // --------------------------
 
+export function formatRoutes (templates) {
+    return Object.keys(templates).map(key => {
+
+        let _path = `/${formatLinkKey(key)}`;
+        _path = /\_\_index/g.test(key) ? _path.replace('/index', '') : _path;
+
+        return { path: _path, component: { template: templates[ key ].template } };
+    });
+}
+
 export function formatMenu (templates) {
 
     const _groups = collection_utils.groupBy(templates, (value) => {
@@ -63,8 +73,10 @@ function formatMenuItem (key, data) {
 
 function formatMenuIndexItem (key, data) {
 
+    // return { key, data };
+
     const _key = key.replace('__index', '');
-    const _label = _key.replace('_', ' ');
+    const _label = _key.replace(/_/g, ' ');
 
     return {
         key : _key,

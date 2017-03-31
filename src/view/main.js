@@ -2,20 +2,15 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App';
 import * as templates from 'data/content/template-map';
-
-function formatLinkKey (key) {
-    return key.replace(/\_\_/g, "/").replace(/\_/g, "-");
-}
-
-let routes = Object.keys(templates).map(key => {
-    return { path: `/${formatLinkKey(key)}`, component: { template: templates[ key ].template } };
-});
+import * as menu_utils from 'utils/menu.utils';
 
 Vue.use(VueRouter);
 
+const _routes = menu_utils.formatRoutes(templates);
+
 const router = new VueRouter({
     // mode: 'history',
-    routes
+    routes: _routes
 });
 
 new Vue({

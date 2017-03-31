@@ -17,6 +17,13 @@ export function groupBy (source, iteratee) {
     }, {});
 }
 
+export function indexOfKeyValue(arr, key, value) {
+    let _values = arr.map(function(item) {
+        return item[ key ];
+    });
+    return _values.indexOf(value);
+}
+
 export function regexIncludes (arr, regex) {
     return arr.filter((item) => item.match(regex)).length > 0;
 }

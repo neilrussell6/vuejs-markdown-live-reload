@@ -58,7 +58,8 @@ function pathMd2Html (path_in, path_out, options = {}) {
         // custom render rules
         _markdownit.renderer.rules.link_open = function (tokens, idx) {
             let _link = tokens[idx].attrs.reduce((r, attr) => attr[0] === 'href' ? attr[1] : r, null);
-            return `<a href="#${_link}">`;
+            _link = /^http/.test(_link) ? _link : `#${_link}`;
+            return `<a href="${_link}">`;
         };
 
         let _result = formatResult(_markdownit.render(buffer.toString()), MD_2_HTML_CONFIG);
