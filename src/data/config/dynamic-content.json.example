@@ -1,0 +1,17 @@
+{
+    "categories": [
+        {
+            "label": "Cat 1",
+            "items": [
+                "/sub-dir",
+                "/code-examples"
+            ]
+        }
+    ],
+    "order": [
+        "/index",
+        "/sub-dir",
+        "/code-examples",
+        "/sub-dir-2"
+    ]
+}

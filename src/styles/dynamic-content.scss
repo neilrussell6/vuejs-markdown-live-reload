@@ -14,14 +14,17 @@
 
         @media screen and (min-width: $breakpoint-sm) {
             min-width: $aside-1-width-sm;
+            max-width: $aside-1-width-md;
         }
 
         @media screen and (min-width: $breakpoint-md) {
             min-width: $aside-1-width-md;
+            max-width: $aside-1-width-lg;
         }
 
         @media screen and (min-width: $breakpoint-lg) {
             min-width: $aside-1-width-lg;
+            max-width: $aside-1-width-xl;
         }
     }
 

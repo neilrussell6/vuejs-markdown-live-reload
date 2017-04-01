@@ -26,7 +26,7 @@
             <div v-if="is_categorized">
                 <div v-for="category in categories">
 
-                    <h3 v-if="category.label">{{category.label}}</h3>
+                    <div v-if="category.label" class="category">{{category.label}}</div>
 
                     <ul class="nav">
 
@@ -68,6 +68,7 @@
 
     // data
     import * as templates from 'data/content/template-map';
+    import * as config from 'data/config/dynamic-content.json';
 
     // utils
     import * as menu_utils from 'utils/menu.utils';
@@ -77,32 +78,9 @@
     // VueJS
     // ----------------------------
 
-    const _config_categories = [
-        {
-            label: 'Cat 1',
-            items: [
-                '/sub-dir',
-                '/code-examples'
-            ]
-        },
-        {
-            label: 'Cat 2',
-            items: [
-                '/sub-dir-2'
-            ]
-        }
-    ];
-
-    const _config_menu_order = [
-        '/index',
-        '/sub-dir',
-        '/code-examples',
-        '/sub-dir-2'
-    ];
-
     let _menu = menu_utils.formatMenu(templates);
-    _menu = menu_utils.sortMenu(_menu, 'to', _config_menu_order);
-    let _categories = menu_utils.populateCategoryIndices(_menu, _config_categories);
+    _menu = menu_utils.sortMenu(_menu, 'to', config.order);
+    let _categories = menu_utils.populateCategoryIndices(_menu, config.categories);
 
     export default {
 

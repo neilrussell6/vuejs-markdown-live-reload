@@ -24,6 +24,7 @@ $breakpoint-lg: 1400px;
 $aside-1-width-sm: 260px;
 $aside-1-width-md: 280px;
 $aside-1-width-lg: 300px;
+$aside-1-width-xl: 360px;
 
 // --------------------------
 // palette
@@ -73,6 +74,7 @@ $text-color-light: lighten($med-grey, 25%);
 // text
 $heading-color-light: darken(desaturate($light-yellow, 30%), 15%);
 $heading-color-dark: $dark-grey;
+$subheading-color-light: $light-blue;
 
 // link
 $link-color: darken(desaturate($light-green, 60%), 10%);

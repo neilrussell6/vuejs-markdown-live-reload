@@ -116,13 +116,13 @@ h3,
 h4 {
     font-family: "Droid Sans", "Trebuchet MS";
     color: $heading-color-light;
-    text-shadow: rgba($light-yellow, .1) 0 10px 10px;
+    text-shadow: rgba($heading-color-light, .1) 0 10px 10px;
 }
 
 h3,
 h4 {
-    color: $light-blue;
-    text-shadow: rgba(lighten($light-blue, 10%), .2) 0 6px 6px;
+    color: $subheading-color-light;
+    text-shadow: rgba(lighten($subheading-color-light, 10%), .2) 0 6px 6px;
 }
 
 .highlight {
@@ -175,13 +175,6 @@ a {
     text-transform: uppercase;
     transition: color .2s linear, background-color .2s linear;
 
-    i {
-        background-color: transparent;
-        color: $link-icon-color;
-        text-shadow: 0 0 15px #000;
-    }
-
-
     &:hover {
         background-color: $darker-red;
         color: $link-color-hover;
@@ -198,6 +191,12 @@ a {
         color: $link-color-selected;
         cursor: default;
         transition: color .2s linear, background-color .2s linear;
+    }
+
+    i {
+        background-color: transparent;
+        color: $link-icon-color;
+        text-shadow: 0 0 15px #000;
     }
 }
 
@@ -234,12 +233,12 @@ input {
         rgba(darken($bg-color-med, 6%), .8) 10px,
         rgba(darken($bg-color-med, 6%), .8) 20px
     );
-    //border: 1px solid red;
+
+    @media screen and (min-width: $breakpoint-sm) {
+        margin-bottom: $big-h-pad;
+    }
 
     .content-wrapper {
-        //background-color: rgba(darken(desaturate($blue, 35%), 15%), .8);
-        //background-color: rgba(darken($bg-color-med, 6%), .8);
-        //background: rgba(darken($bg-color-med, 6%), .8) url('../assets/portfolio-header-bg.png') top left no-repeat;
         background: url('../assets/portfolio-header-bg.png') top left no-repeat;
         position: relative;
         width: 100%;
@@ -247,8 +246,6 @@ input {
 
         > .content {
             background-color: rgba(darken($bg-color-med, 4%), .8);
-            //background-color: rgba(darken($bg-color-med, 6%), .7);
-            //background-blend-mode: overlay;
             height: 65px;
             border-bottom: 1px solid rgba($light-green, .15);
             margin: 0 0 $small-h-pad;
@@ -256,10 +253,6 @@ input {
             width: 100%;
             overflow: hidden;
         }
-    }
-
-    @media screen and (min-width: $breakpoint-sm) {
-        margin-bottom: $big-h-pad;
     }
 
     h3 {
@@ -393,9 +386,13 @@ input {
 // aside-1 nav
 // ----------------------------------
 
-.aside-1 h3 {
+.aside-1 .category {
     margin-left: $small-h-pad;
     margin-bottom: 0;
+    font-family: "Droid Sans", "Trebuchet MS";
+    font-size: 1em;
+    color: $subheading-color-light;
+    text-shadow: rgba($light-yellow, .1) 0 10px 10px;
 }
 
 .aside-1 .nav {
@@ -415,7 +412,7 @@ input {
     }
 
     .nav-item {
-        line-height: 1.2em;
+        line-height: 1.4em;
 
         &.selected {
             .sub-nav {
@@ -463,7 +460,12 @@ input {
             display: none;
 
             .nav-item {
-                line-height: 0.6em;
+                line-height: 1.4em;
+
+                a {
+                    padding-top: $small-v-pad;
+                    padding-bottom: $small-v-pad;
+                }
             }
         }
     }

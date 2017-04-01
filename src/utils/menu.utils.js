@@ -24,11 +24,11 @@ export function formatMenu (templates) {
 
         // single item
 
-        if (_groups[ key ].length === 1) {
+        if (_groups[ key ].length === 1 && !/\_\_index/g.test(_groups[ key ])) {
             return formatMenuItem(key, templates[ _groups[ key ][0] ]);
         }
 
-        // multiple items
+        // multiple items or nested single items
 
         const _index_index = collection_utils.regexIndexOf(_groups[ key ], /index/g);
         const _index_config = formatMenuIndexItem(_groups[ key ][ _index_index ], templates[ _groups[ key ][ _index_index ] ]);
@@ -85,21 +85,6 @@ export function populateCategoryIndices (menu, category_config) {
     }, _result);
 }
 
-export function findByProp (menu, prop, value) {
-
-    return [ ...menu ].sort((a, b) => {
-
-        const _a_i = order.indexOf(a[ prop ]);
-        const _b_i = order.indexOf(b[ prop ]);
-
-        if (_a_i === -1 || _b_i === -1) {
-            return 0;
-        }
-
-        return _a_i - _b_i;
-    });
-}
-
 // --------------------------
 // private
 // --------------------------
@@ -118,6 +103,7 @@ function formatMenuItem (key, data) {
 
 function formatMenuIndexItem (key, data) {
 
+    console.log("formatMenuIndexItem ",key, data);
     // return { key, data };
 
     const _key = key.replace('__index', '');
