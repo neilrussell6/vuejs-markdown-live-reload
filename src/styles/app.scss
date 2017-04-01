@@ -47,8 +47,8 @@ p,
 input,
 button {
     font-family: "Liberation Mono", Verdana, sans-serif;
-    letter-spacing: 0.1em;
-    line-height: 1.4em;
+    letter-spacing: 0.05em;
+    line-height: 1.5em;
     font-size: 15px;
 }
 
@@ -62,19 +62,52 @@ button {
     color: $light-green;
     text-shadow: rgba(lighten($light-green, 10%), 0.3) 0 6px 8px;
     display: inline-block;
+    position: relative;
+    width: 100%;
+
+    @media screen and (min-width: $breakpoint-sm) {
+        width: auto;
+    }
 
     i {
-        font-size: 14px;
-        color: lighten($light-blue, 2%);
-        text-shadow: rgba(lighten($light-blue, 30%), 0.7) 0 0 12px;
+        position: absolute;
+        top: -34px;
+        left: -22px;
+        font-size: 86px;
+        color: rgba(lighten($light-green, 2%), .5);
+        filter: blur(2px);
+        opacity: .2;
+        text-shadow: rgba(lighten($light-green, 30%), .7) 0 0 12px;
+    }
+
+    .primary {
+        background-color: rgba(#000, .2);
+        padding: 5px 10px;
+
+        @media screen and (min-width: $breakpoint-sm) {
+            width: auto;
+        }
+
+        span {
+            background-color: rgba(#000, .2);
+            padding: 5px 10px;
+        }
     }
 
     .secondary {
-        font-size: .9em;
+        font-size: .7em;
         font-family: "Droid Sans", "Trebuchet MS";
         color: lighten($light-blue, 2%);
-        text-shadow: rgba(lighten($light-blue, 10%), 0.3) 0 6px 8px;
+        text-shadow: rgba(lighten($light-blue, 10%), .3) 0 6px 8px;
+
+        @media screen and (min-width: $breakpoint-xs) {
+            font-size: .9em;
+        }
     }
+}
+
+h1 {
+    margin-bottom: $big-v-pad * 2;
 }
 
 h1,
@@ -85,9 +118,11 @@ h4 {
     color: $heading-color-light;
     text-shadow: rgba($light-yellow, .1) 0 10px 10px;
 }
+
 h3,
 h4 {
     color: $light-blue;
+    text-shadow: rgba(lighten($light-blue, 10%), .2) 0 6px 6px;
 }
 
 .highlight {
@@ -188,40 +223,43 @@ input {
 // ----------------------------------
 
 .header {
-    margin-bottom: $big-h-pad;
     align-items: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: repeating-linear-gradient(
+        135deg,
+        rgba(darken($bg-color-med, 5%), .8),
+        rgba(darken($bg-color-med, 5%), .8) 10px,
+        rgba(darken($bg-color-med, 6%), .8) 10px,
+        rgba(darken($bg-color-med, 6%), .8) 20px
+    );
+    //border: 1px solid red;
 
-    &.content-wrapper {
+    .content-wrapper {
         //background-color: rgba(darken(desaturate($blue, 35%), 15%), .8);
-        background-color: rgba(darken($bg-color-med, 6%), .8);
+        //background-color: rgba(darken($bg-color-med, 6%), .8);
+        //background: rgba(darken($bg-color-med, 6%), .8) url('../assets/portfolio-header-bg.png') top left no-repeat;
+        background: url('../assets/portfolio-header-bg.png') top left no-repeat;
         position: relative;
         width: 100%;
+        position: relative;
 
         > .content {
+            background-color: rgba(darken($bg-color-med, 4%), .8);
+            //background-color: rgba(darken($bg-color-med, 6%), .7);
+            //background-blend-mode: overlay;
+            height: 65px;
             border-bottom: 1px solid rgba($light-green, .15);
             margin: 0 0 $small-h-pad;
             padding: $med-h-pad;
             width: 100%;
+            overflow: hidden;
         }
     }
 
-    &:after {
-        content: '';
-        background: repeating-linear-gradient(
-            135deg,
-            rgba(darken($bg-color-dark, 13%), .06),
-            rgba(darken($bg-color-dark, 13%), .06) 10px,
-            rgba(darken($bg-color-dark, 5%), .06) 10px,
-            rgba(darken($bg-color-dark, 5%), .06) 20px
-        );
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        bottom: -$med-h-pad;
-        z-index: -1;
+    @media screen and (min-width: $breakpoint-sm) {
+        margin-bottom: $big-h-pad;
     }
 
     h3 {
@@ -229,20 +267,22 @@ input {
     }
 }
 
+.footer {
+    margin: $med-h-pad $med-h-pad + $small-h-pad;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media screen and (min-width: $breakpoint-md) {
+        margin: $big-h-pad;
+    }
+}
+
 .page {
     display: flex;
     flex: 1;
     flex-direction: column;
-    min-height: 100vh;
-
-    @media screen and (min-width: $breakpoint-lg) {
-        margin: 0 auto;
-        width: 1400px;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
 
     &.center-contents {
         align-items: center;
@@ -250,35 +290,26 @@ input {
     }
 
     .content-wrapper {
-        //background-color: rgba($bg-color-med, .8);
-        background-color: rgba(darken($bg-color-med, 4%), .8);
+        background: repeating-linear-gradient(
+            135deg,
+            rgba(darken($bg-color-med, 5%), .8),
+            rgba(darken($bg-color-med, 5%), .8) 10px,
+            rgba(darken($bg-color-med, 4%), .8) 10px,
+            rgba(darken($bg-color-med, 4%), .8) 20px
+        );
         position: relative;
 
-        &:after {
-            content: '';
-            background: repeating-linear-gradient(
-                135deg,
-                rgba(darken($bg-color-dark, 3%), .2),
-                rgba(darken($bg-color-dark, 3%), .2) 10px,
-                rgba(darken($bg-color-dark, 1%), .2) 10px,
-                rgba(darken($bg-color-dark, 1%), .2) 20px
-            );
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            right: -$med-h-pad;
-            bottom: -$med-h-pad;
-            z-index: -1;
-        }
-
         > .content {
-            border: 1px solid rgba($light-green, .2);
-            margin: $small-h-pad;
-            padding: $small-h-pad;
+            background-color: rgba(darken($bg-color-med, 4%), .8);
+            border-top: 1px solid rgba($light-green, .2);
+            border-bottom: 1px solid rgba($light-green, .2);
+            margin: $small-h-pad 0;
+            padding: $med-h-pad $med-h-pad + $small-h-pad;
 
             @media screen and (min-width: $breakpoint-sm) {
+                border: 1px solid rgba($light-green, .2);
                 margin: $small-h-pad;
-                padding: $med-h-pad;
+                padding: $med-h-pad $big-h-pad;
             }
 
             @media screen and (min-width: $breakpoint-md) {
@@ -290,6 +321,42 @@ input {
                 margin-top: 0;
             }
         }
+    }
+
+    @media screen and (min-width: $breakpoint-sm) {
+
+        > .content {
+            border: 1px solid rgba($light-green, .2);
+            margin: $small-h-pad;
+            padding: $small-h-pad;
+        }
+    }
+
+    @media screen and (min-width: $breakpoint-md) {
+        .content-wrapper {
+
+            &:after {
+                content: '';
+                background: repeating-linear-gradient(
+                    135deg,
+                    rgba(darken($bg-color-dark, 3%), .2),
+                    rgba(darken($bg-color-dark, 3%), .2) 10px,
+                    rgba(darken($bg-color-dark, 1%), .2) 10px,
+                    rgba(darken($bg-color-dark, 1%), .2) 20px
+                );
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                right: -$med-h-pad;
+                bottom: -$med-h-pad;
+                z-index: -1;
+            }
+        }
+    }
+
+    @media screen and (min-width: $breakpoint-lg) {
+        margin: 0 auto;
+        width: 1400px;
     }
 
     .header,
@@ -330,6 +397,11 @@ input {
     padding: $small-h-pad 0 0;
     margin: 0;
     width: 100%;
+    margin-bottom: $med-h-pad;
+
+    @media screen and (min-width: $breakpoint-sm) {
+        margin-bottom: 0;
+    }
 
     .nav {
         padding-top: 0;
@@ -341,27 +413,32 @@ input {
     }
 
     .sub-nav .nav-item {
-        line-height: 0.4em;
+        line-height: 0.6em;
     }
 
     .nav-item a {
         cursor: pointer;
         display: block;
-        //font-family: consolas, 'Liberation Mono', Menlo, monospace;
         font-family: "Droid Sans", "Trebuchet MS";
         letter-spacing: 0.05em;
-        //font-family: 'Liberation Mono', "Comic Sans MS";
-        margin: 0 $med-h-pad;// $small-v-pad;
-        padding: $med-v-pad $med-h-pad;
+        margin: 0 $med-h-pad;
+        padding: $med-v-pad $small-h-pad;
+
+        @media screen and (min-width: $breakpoint-md) {
+            padding-left: $med-h-pad;
+        }
     }
 
     .nav-item .router-link-active {
         color: desaturate($light-yellow, 30%);
-        //cursor: default;
-        padding-left: $nav-icon-width + $med-h-pad;
+        padding-left: $nav-icon-width + $small-h-pad;
         //pointer-events: none;
         position: relative;
         transition: color 0s linear, padding-left 0s linear;
+
+        @media screen and (min-width: $breakpoint-md) {
+            padding-left: $nav-icon-width + $med-h-pad;
+        }
 
         &::before {
             content: '\f0da';

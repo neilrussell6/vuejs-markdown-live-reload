@@ -6,7 +6,7 @@
 
 .body {
 
-    @media screen and (min-width: $breakpoint-sm) {
+    @media screen and (min-width: $breakpoint-md) {
         padding-right: $med-h-pad * 2;
     }
 

@@ -15,7 +15,8 @@ $xbig-v-pad: 40px;
 $xbig-h-pad: 60px;
 
 // structure: breakpoints
-$breakpoint-sm: 640px;
+$breakpoint-xs: 420px;
+$breakpoint-sm: 690px;
 $breakpoint-md: 1040px;
 $breakpoint-lg: 1400px;
 
@@ -41,7 +42,7 @@ $dark-red: #4d0000;
 $red: lighten($dark-red, 10%);
 $darker-red: darken($dark-red, 5%);
 
-$light-blue: #6d9cbe;//#9cc1db;
+$light-blue: darken(desaturate(#6d9cbe, 20%), 5%);;//#9cc1db;
 $blue: darken($light-blue, 20%);
 $lighter-blue: #a8dbff;
 
@@ -67,10 +68,10 @@ $bdr-color-light: $light-grey;
 // text
 $text-color-dark: darken($dark-grey, 10%);
 $text-color-med: darken($med-grey, 10%);
-$text-color-light: lighten($med-grey, 20%);
+$text-color-light: lighten($med-grey, 25%);
 
 // text
-$heading-color-light: desaturate($light-yellow, 10%);
+$heading-color-light: darken(desaturate($light-yellow, 30%), 15%);
 $heading-color-dark: $dark-grey;
 
 // link

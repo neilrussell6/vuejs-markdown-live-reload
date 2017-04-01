@@ -1,23 +1,24 @@
 <template>
     <div class="wrapper">
 
-        <div class="header content-wrapper">
-            <div class="content">
-                <h3 class="logo">
-                    <i class="fa fa-smile-o" aria-hidden="true"></i>
-                    <span>Neil Russell</span>
-                    <span class="secondary">:: full stack web developer</span>
-                </h3>
+        <header class="header">
+            <div class="content-wrapper">
+                <div class="content">
+                    <h3 class="logo">
+                        <i class="fa fa-smile-o" aria-hidden="true"></i>
+                        <span class="primary"><span>Neil</span> Russell</span>
+                        <span class="secondary">:: web developer</span>
+                    </h3>
+                </div>
             </div>
-        </div>
+        </header>
 
         <div class="page">
-
             <dynamic-content></dynamic-content>
-
-            <div class="footer content">neilrussell6@gmail.com</div>
-
         </div>
+
+        <footer class="footer content">neilrussell6@gmail.com</footer>
+
     </div>
 </template>
 
