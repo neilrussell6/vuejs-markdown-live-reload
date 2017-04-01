@@ -1,5 +1,5 @@
-Sub Directory Page 2
-====================
+Part 2
+======
 
 ### Heading One
 

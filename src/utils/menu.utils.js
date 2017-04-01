@@ -4,17 +4,7 @@ import * as collection_utils from './collection.utils';
 // public
 // --------------------------
 
-export function formatRoutes (templates) {
-    return Object.keys(templates).map(key => {
-
-        let _path = `/${formatLinkKey(key)}`;
-        _path = /\_\_index/g.test(key) ? _path.replace('/index', '') : _path;
-
-        return { path: _path, component: { template: templates[ key ].template } };
-    });
-}
-
-export function formatMenu (templates) {
+export function formatMenu (templates, config = {}) {
 
     const _groups = collection_utils.groupBy(templates, (value) => {
         return value.split(/\_\_/g)[0];
@@ -25,37 +15,66 @@ export function formatMenu (templates) {
         // single item
 
         if (_groups[ key ].length === 1 && !/\_\_index/g.test(_groups[ key ])) {
-            return formatMenuItem(key, templates[ _groups[ key ][0] ]);
+            return formatMenuItem(key, templates[ _groups[ key ][0] ], config);
         }
 
         // multiple items or nested single items
 
         const _index_index = collection_utils.regexIndexOf(_groups[ key ], /index/g);
         const _index_config = formatMenuIndexItem(_groups[ key ][ _index_index ], templates[ _groups[ key ][ _index_index ] ]);
-        const _menu_item = formatMenuItem(_index_config.key, _index_config.data);
+        const _menu_item = formatMenuItem(_index_config.key, _index_config.data, config);
         const _keys_excluding_index = [
             ..._groups[ key ].slice(0, _index_index),
             ..._groups[ key ].slice(_index_index + 1)
         ];
 
         return Object.assign({}, _menu_item, {
-            items: _keys_excluding_index.map((key) => formatMenuItem(key, templates[ key ]))
+            items: _keys_excluding_index.map((key) => formatMenuItem(key, templates[ key ], config))
         });
     });
 }
 
-export function sortMenu (menu, prop, order) {
+export function formatMenuLabel (label, config) {
 
-    return [ ...menu ].sort((a, b) => {
+    if (!config.hasOwnProperty('label')) {
+        return label;
+    }
 
-        const _a_i = order.indexOf(a[ prop ]);
-        const _b_i = order.indexOf(b[ prop ]);
+    // separators
 
-        if (_a_i === -1 || _b_i === -1) {
-            return 0;
-        }
+    // list number separator
+    if (config.label.hasOwnProperty('list_number_separator') && /^\d+/.test(label)) {
+        label = label.replace(/^(\d+)/, `$1${config.label.list_number_separator}`);
+    }
 
-        return _a_i - _b_i;
+    // number separators
+    if (config.label.hasOwnProperty('number_separators')) {
+
+        label = Object.keys(config.label.number_separators).reduce((result, key) => {
+            const _reg_exp = new RegExp(`(${key}\\s\\d+)`, 'gi');
+            return result.replace(_reg_exp, `$1${config.label.number_separators[ key ]}`);
+        }, label);
+    }
+
+    // replacements
+
+    if (!config.label.hasOwnProperty('replacements')) {
+        return label;
+    }
+
+    return Object.keys(config.label.replacements).reduce((result, key) => {
+        const _reg_exp = new RegExp(`${key}`, 'g');
+        return result.replace(_reg_exp, config.label.replacements[ key ]);
+    }, label);
+}
+
+export function formatRoutes (templates) {
+    return Object.keys(templates).map(key => {
+
+        let _path = `/${formatLinkKey(key)}`;
+        _path = /\_\_index/g.test(key) ? _path.replace('/index', '') : _path;
+
+        return { path: _path, component: { template: templates[ key ].template } };
     });
 }
 
@@ -85,6 +104,21 @@ export function populateCategoryIndices (menu, category_config) {
     }, _result);
 }
 
+export function sortMenu (menu, prop, order) {
+
+    return [ ...menu ].sort((a, b) => {
+
+        const _a_i = order.indexOf(a[ prop ]);
+        const _b_i = order.indexOf(b[ prop ]);
+
+        if (_a_i === -1 || _b_i === -1) {
+            return 0;
+        }
+
+        return _a_i - _b_i;
+    });
+}
+
 // --------------------------
 // private
 // --------------------------
@@ -93,18 +127,15 @@ function formatLinkKey (key) {
     return key.replace(/\_\_/g, "/").replace(/\_/g, "-");
 }
 
-function formatMenuItem (key, data) {
+function formatMenuItem (key, data, config = {}) {
     return {
         to: `/${formatLinkKey(key)}`,
-        label: data.label,
+        label: formatMenuLabel(data.label, config),
         key: data.key
     };
 }
 
 function formatMenuIndexItem (key, data) {
-
-    console.log("formatMenuIndexItem ",key, data);
-    // return { key, data };
 
     const _key = key.replace('__index', '');
     const _label = _key.replace(/_/g, ' ');

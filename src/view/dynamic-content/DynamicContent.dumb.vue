@@ -78,8 +78,11 @@
     // VueJS
     // ----------------------------
 
-    let _menu = menu_utils.formatMenu(templates);
+    let _menu = menu_utils.formatMenu(templates, config);
     _menu = menu_utils.sortMenu(_menu, 'to', config.order);
+    _menu = _menu.map((item) => {
+        return item.hasOwnProperty('items') ? Object.assign({}, item, { items: menu_utils.sortMenu(item.items, 'to', config.order) }) : item;
+    });
     let _categories = menu_utils.populateCategoryIndices(_menu, config.categories);
 
     export default {
@@ -101,7 +104,9 @@
 
         mounted: function () {
             const _selected_item = collection_utils.findByKeyValue(_menu, 'to', router.currentRoute.path);
-            this.selected_item_key = _selected_item.key;
+            if (_selected_item !== null) {
+                this.selected_item_key = _selected_item.key;
+            }
         }
     };
 </script>

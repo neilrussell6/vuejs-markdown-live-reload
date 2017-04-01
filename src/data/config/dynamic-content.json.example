@@ -13,5 +13,16 @@
         "/sub-dir",
         "/code-examples",
         "/sub-dir-2"
-    ]
+    ],
+    "label": {
+        "replacements": {
+            "js": "JavaScript",
+            "es6": "ES6"
+        },
+        "list_number_separator": ".",
+        "number_separators": {
+            "step": " -",
+            "part": " ~"
+        }
+    }
 }

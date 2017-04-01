@@ -49,7 +49,7 @@ button {
     font-family: "Liberation Mono", Verdana, sans-serif;
     letter-spacing: 0.05em;
     line-height: 1.5em;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 // ----------------------------------
@@ -390,7 +390,7 @@ input {
     margin-left: $small-h-pad;
     margin-bottom: 0;
     font-family: "Droid Sans", "Trebuchet MS";
-    font-size: 1em;
+    font-size: 15px;
     color: $subheading-color-light;
     text-shadow: rgba($light-yellow, .1) 0 10px 10px;
 }
@@ -412,7 +412,7 @@ input {
     }
 
     .nav-item {
-        line-height: 1.4em;
+        line-height: 1.5em;
 
         &.selected {
             .sub-nav {
@@ -460,7 +460,7 @@ input {
             display: none;
 
             .nav-item {
-                line-height: 1.4em;
+                line-height: 1.5em;
 
                 a {
                     padding-top: $small-v-pad;
@@ -548,7 +548,7 @@ pre {
     background-color: rgba(#000, .1);
     border: 1px solid rgba($light-yellow, .1);
     //box-shadow: 0 0 15px rgba($light-yellow, .05), inset 0 0 25px rgba(#000, .1);
-    line-height: 1.3em;
+    line-height: 1.5em;
 
     .hljs {
         background-color: transparent;
