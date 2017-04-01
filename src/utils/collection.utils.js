@@ -18,10 +18,11 @@ export function groupBy (source, iteratee) {
 }
 
 export function indexOfKeyValue(arr, key, value) {
-    let _values = arr.map(function(item) {
-        return item[ key ];
-    });
-    return _values.indexOf(value);
+    return arr.map((item) => item[ key ]).indexOf(value);
+}
+
+export function findByKeyValue(arr, key, value) {
+    return arr.reduce((result, item) => item[ key ] === value ? item : result, null);
 }
 
 export function regexIncludes (arr, regex) {

@@ -305,6 +305,7 @@ input {
             border-bottom: 1px solid rgba($light-green, .2);
             margin: $small-h-pad 0;
             padding: $med-h-pad $med-h-pad + $small-h-pad;
+            min-height: 300px;
 
             @media screen and (min-width: $breakpoint-sm) {
                 border: 1px solid rgba($light-green, .2);
@@ -410,45 +411,55 @@ input {
 
     .nav-item {
         line-height: 1.2em;
-    }
 
-    .sub-nav .nav-item {
-        line-height: 0.6em;
-    }
-
-    .nav-item a {
-        cursor: pointer;
-        display: block;
-        font-family: "Droid Sans", "Trebuchet MS";
-        letter-spacing: 0.05em;
-        margin: 0 $med-h-pad;
-        padding: $med-v-pad $small-h-pad;
-
-        @media screen and (min-width: $breakpoint-md) {
-            padding-left: $med-h-pad;
-        }
-    }
-
-    .nav-item .router-link-active {
-        color: desaturate($light-yellow, 30%);
-        padding-left: $nav-icon-width + $small-h-pad;
-        //pointer-events: none;
-        position: relative;
-        transition: color 0s linear, padding-left 0s linear;
-
-        @media screen and (min-width: $breakpoint-md) {
-            padding-left: $nav-icon-width + $med-h-pad;
+        &.selected {
+            .sub-nav {
+                display: block;
+            }
         }
 
-        &::before {
-            content: '\f0da';
-            font-family: fontawesome;
-            margin-left: -$nav-icon-width;
-            position: absolute;
+        a {
+            cursor: pointer;
+            display: block;
+            font-family: "Droid Sans", "Trebuchet MS";
+            letter-spacing: 0.05em;
+            margin: 0 $med-h-pad;
+            padding: $med-v-pad $small-h-pad;
+
+            @media screen and (min-width: $breakpoint-md) {
+                padding-left: $med-h-pad;
+            }
         }
 
-        li {
-            padding: 0;
+        .router-link-active {
+            color: desaturate($light-yellow, 30%);
+            padding-left: $nav-icon-width + $small-h-pad;
+            //pointer-events: none;
+            position: relative;
+            transition: color 0s linear, padding-left 0s linear;
+
+            @media screen and (min-width: $breakpoint-md) {
+                padding-left: $nav-icon-width + $med-h-pad;
+            }
+
+            &::before {
+                content: '\f0da';
+                font-family: fontawesome;
+                margin-left: -$nav-icon-width;
+                position: absolute;
+            }
+
+            li {
+                padding: 0;
+            }
+        }
+
+        .sub-nav {
+            display: none;
+
+            .nav-item {
+                line-height: 0.6em;
+            }
         }
     }
 }

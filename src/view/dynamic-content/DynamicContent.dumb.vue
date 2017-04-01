@@ -6,8 +6,9 @@
 
             <ul class="nav">
 
-                <li v-for="item in menu" class="nav-item">
-                    <router-link :to="item.to">{{item.label}}</router-link>
+                <li v-for="item in menu" class="nav-item" :class="{'selected': selected_item_key === item.key}">
+
+                    <router-link :to="item.to" v-on:click.native="_onSelect(item)">{{item.label}}</router-link>
 
                     <template v-if="item.hasOwnProperty('items')">
 
@@ -36,11 +37,14 @@
 
 <script type="text/babel">
 
+    import { router } from '../main';
+
     // data
     import * as templates from 'data/content/template-map';
 
     // utils
     import * as menu_utils from 'utils/menu.utils';
+    import * as collection_utils from 'utils/collection.utils';
 
     // ----------------------------
     // VueJS
@@ -48,7 +52,9 @@
 
     const _menu_order = [
         '/index',
-        '/code-examples'
+        '/sub-dir',
+        '/code-examples',
+        '/sub-dir-2'
     ];
     const _menu = menu_utils.sortMenu(menu_utils.formatMenu(templates), 'to', _menu_order);
 
@@ -57,14 +63,19 @@
         data: function () {
             return {
                 menu: _menu,
-                selected_item: null
+                selected_item_key: null
             };
         },
 
         methods: {
-            onSelect (link) {
-                this.selected_item = link;
+            _onSelect (link) {
+                this.selected_item_key = link.key;
             }
+        },
+
+        mounted: function () {
+            const _selected_item = collection_utils.findByKeyValue(_menu, 'to', router.currentRoute.path);
+            this.selected_item_key = _selected_item.key;
         }
     };
 </script>

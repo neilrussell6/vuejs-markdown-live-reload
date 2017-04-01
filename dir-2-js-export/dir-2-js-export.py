@@ -63,7 +63,7 @@ def main(args):
     for path in path_list:
         _key = path2Key(path)
         _label = path2Label(path)
-        result += 'const %s = { template: _%s, label: "%s" };\n' % (_key, _key, _label)
+        result += 'const %s = { template: _%s, label: "%s" , key: "%s" };\n' % (_key, _key, _label, _key)
 
     result += '\n'
 
