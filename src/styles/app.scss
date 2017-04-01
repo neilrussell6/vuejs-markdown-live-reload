@@ -305,7 +305,7 @@ input {
             border-bottom: 1px solid rgba($light-green, .2);
             margin: $small-h-pad 0;
             padding: $med-h-pad $med-h-pad + $small-h-pad;
-            min-height: 300px;
+            min-height: 400px;
 
             @media screen and (min-width: $breakpoint-sm) {
                 border: 1px solid rgba($light-green, .2);
@@ -392,6 +392,11 @@ input {
 // ----------------------------------
 // aside-1 nav
 // ----------------------------------
+
+.aside-1 h3 {
+    margin-left: $small-h-pad;
+    margin-bottom: 0;
+}
 
 .aside-1 .nav {
     list-style: none;

@@ -59,6 +59,32 @@ export function sortMenu (menu, prop, order) {
     });
 }
 
+export function populateCategoryIndices (menu, category_config) {
+
+    // build result from category_config
+    let _result = category_config.map((item) => Object.assign({}, { label: item.label, menu_indices: [] }));
+
+    // set uncategorised index
+    let _uncategorised_index = _result.length;
+
+    // add uncategorised category
+    _result = [ ..._result, { label: "Uncategorised", menu_indices: [] } ];
+
+    let _category_index;
+
+    return menu.reduce((result, item, i) => {
+        _category_index = category_config.reduce((result, category, category_i) => category.items.indexOf(item.to) > -1 ? category_i : result, null);
+
+        if (_category_index === null) {
+            _result[ _uncategorised_index ].menu_indices.push(i);
+        } else {
+            _result[ _category_index ].menu_indices.push(i);
+        }
+
+        return result;
+    }, _result);
+}
+
 export function findByProp (menu, prop, value) {
 
     return [ ...menu ].sort((a, b) => {

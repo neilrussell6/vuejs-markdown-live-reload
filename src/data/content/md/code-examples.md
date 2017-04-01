@@ -49,5 +49,3 @@ while :; do
     done
 done
 ```
-
-@[codepen](YNpWQL)

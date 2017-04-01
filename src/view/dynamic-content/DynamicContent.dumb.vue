@@ -4,7 +4,7 @@
 
         <aside class="aside aside-1">
 
-            <ul class="nav">
+            <ul class="nav" v-if="!is_categorized">
 
                 <li v-for="item in menu" class="nav-item" :class="{'selected': selected_item_key === item.key}">
 
@@ -22,6 +22,33 @@
 
                 </li>
             </ul>
+
+            <div v-if="is_categorized">
+                <div v-for="category in categories">
+
+                    <h3 v-if="category.label">{{category.label}}</h3>
+
+                    <ul class="nav">
+
+                        <li v-for="item_i in category.menu_indices" class="nav-item" :class="{'selected': selected_item_key === menu[ item_i ].key}">
+
+                            <router-link :to="menu[ item_i ].to" v-on:click.native="_onSelect(menu[ item_i ])">{{menu[ item_i ].label}}</router-link>
+
+                            <template v-if="menu[ item_i ].hasOwnProperty('items')">
+
+                                <ul class="nav sub-nav">
+                                    <li v-for="subitem in menu[ item_i ].items" class="nav-item">
+                                        <router-link :to="subitem.to">{{subitem.label}}</router-link>
+                                    </li>
+                                </ul>
+
+                            </template>
+
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
 
         </aside>
 
@@ -50,19 +77,40 @@
     // VueJS
     // ----------------------------
 
-    const _menu_order = [
+    const _config_categories = [
+        {
+            label: 'Cat 1',
+            items: [
+                '/sub-dir',
+                '/code-examples'
+            ]
+        },
+        {
+            label: 'Cat 2',
+            items: [
+                '/sub-dir-2'
+            ]
+        }
+    ];
+
+    const _config_menu_order = [
         '/index',
         '/sub-dir',
         '/code-examples',
         '/sub-dir-2'
     ];
-    const _menu = menu_utils.sortMenu(menu_utils.formatMenu(templates), 'to', _menu_order);
+
+    let _menu = menu_utils.formatMenu(templates);
+    _menu = menu_utils.sortMenu(_menu, 'to', _config_menu_order);
+    let _categories = menu_utils.populateCategoryIndices(_menu, _config_categories);
 
     export default {
 
         data: function () {
             return {
                 menu: _menu,
+                categories: _categories,
+                is_categorized: true,
                 selected_item_key: null
             };
         },
