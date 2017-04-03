@@ -5,9 +5,8 @@
             <div class="content-wrapper">
                 <div class="content">
                     <h3 class="logo">
-                        <i class="fa fa-smile-o" aria-hidden="true"></i>
-                        <span class="primary"><span>Neil</span> Russell</span>
-                        <span class="secondary">:: web developer</span>
+                        <span class="primary"><span>VueJS</span> :: Markdown to HTML</span>
+                        <span class="secondary">with Live Reload</span>
                     </h3>
                 </div>
             </div>
@@ -17,7 +16,7 @@
             <dynamic-content></dynamic-content>
         </div>
 
-        <footer class="footer content">neilrussell6@gmail.com</footer>
+        <footer class="footer content">&nbsp;</footer>
 
     </div>
 </template>

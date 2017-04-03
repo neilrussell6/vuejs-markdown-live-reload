@@ -58,7 +58,6 @@ button {
 
 .logo {
     font-size: 18px;
-    font-family: "Courier New";
     color: $light-green;
     text-shadow: rgba(lighten($light-green, 10%), 0.3) 0 6px 8px;
     display: inline-block;
@@ -69,28 +68,11 @@ button {
         width: auto;
     }
 
-    i {
-        position: absolute;
-        top: -34px;
-        left: -22px;
-        font-size: 86px;
-        color: rgba(lighten($light-green, 2%), .5);
-        filter: blur(2px);
-        opacity: .2;
-        text-shadow: rgba(lighten($light-green, 30%), .7) 0 0 12px;
-    }
-
     .primary {
-        background-color: rgba(#000, .2);
         padding: 5px 10px;
 
         @media screen and (min-width: $breakpoint-sm) {
             width: auto;
-        }
-
-        span {
-            background-color: rgba(#000, .2);
-            padding: 5px 10px;
         }
     }
 
@@ -226,29 +208,19 @@ input {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: repeating-linear-gradient(
-        135deg,
-        rgba(darken($bg-color-med, 5%), .8),
-        rgba(darken($bg-color-med, 5%), .8) 10px,
-        rgba(darken($bg-color-med, 6%), .8) 10px,
-        rgba(darken($bg-color-med, 6%), .8) 20px
-    );
 
     @media screen and (min-width: $breakpoint-sm) {
         margin-bottom: $big-h-pad;
     }
 
     .content-wrapper {
-        background: url('../assets/portfolio-header-bg.png') top left no-repeat;
         position: relative;
         width: 100%;
         position: relative;
 
         > .content {
-            background-color: rgba(darken($bg-color-med, 4%), .8);
             height: 65px;
-            border-bottom: 1px solid rgba($light-green, .15);
-            margin: 0 0 $small-h-pad;
+            margin: 0;
             padding: $med-h-pad;
             width: 100%;
             overflow: hidden;
@@ -283,25 +255,15 @@ input {
     }
 
     .content-wrapper {
-        background: repeating-linear-gradient(
-            135deg,
-            rgba(darken($bg-color-med, 5%), .8),
-            rgba(darken($bg-color-med, 5%), .8) 10px,
-            rgba(darken($bg-color-med, 4%), .8) 10px,
-            rgba(darken($bg-color-med, 4%), .8) 20px
-        );
         position: relative;
+        background-color: rgba(darken($bg-color-med, 4%), .8);
 
         > .content {
-            background-color: rgba(darken($bg-color-med, 4%), .8);
-            border-top: 1px solid rgba($light-green, .2);
-            border-bottom: 1px solid rgba($light-green, .2);
             margin: $small-h-pad 0;
             padding: $med-h-pad $med-h-pad + $small-h-pad;
             min-height: 400px;
 
             @media screen and (min-width: $breakpoint-sm) {
-                border: 1px solid rgba($light-green, .2);
                 margin: $small-h-pad;
                 padding: $med-h-pad $big-h-pad;
             }
@@ -320,31 +282,8 @@ input {
     @media screen and (min-width: $breakpoint-sm) {
 
         > .content {
-            border: 1px solid rgba($light-green, .2);
             margin: $small-h-pad;
             padding: $small-h-pad;
-        }
-    }
-
-    @media screen and (min-width: $breakpoint-md) {
-        .content-wrapper {
-
-            &:after {
-                content: '';
-                background: repeating-linear-gradient(
-                    135deg,
-                    rgba(darken($bg-color-dark, 3%), .2),
-                    rgba(darken($bg-color-dark, 3%), .2) 10px,
-                    rgba(darken($bg-color-dark, 1%), .2) 10px,
-                    rgba(darken($bg-color-dark, 1%), .2) 20px
-                );
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                right: -$med-h-pad;
-                bottom: -$med-h-pad;
-                z-index: -1;
-            }
         }
     }
 
@@ -386,10 +325,13 @@ input {
 // aside-1 nav
 // ----------------------------------
 
+.aside-1 {
+    padding-left: $med-h-pad;
+}
+
 .aside-1 .category {
     margin-left: $small-h-pad;
     margin-bottom: 0;
-    font-family: "Droid Sans", "Trebuchet MS";
     font-size: 15px;
     color: $subheading-color-light;
     text-shadow: rgba($light-yellow, .1) 0 10px 10px;
@@ -398,9 +340,8 @@ input {
 .aside-1 .nav {
     list-style: none;
     padding: $small-h-pad 0 0;
-    margin: 0;
+    margin: 0 0 $med-h-pad;
     width: 100%;
-    margin-bottom: $med-h-pad;
 
     @media screen and (min-width: $breakpoint-sm) {
         margin-bottom: 0;
