@@ -63,7 +63,7 @@ export function formatMenuLabel (label, config) {
     }
 
     return Object.keys(config.label.replacements).reduce((result, key) => {
-        const _reg_exp = new RegExp(`${key}`, 'g');
+        const _reg_exp = new RegExp(`${key}`, 'gi');
         return result.replace(_reg_exp, config.label.replacements[ key ]);
     }, label);
 }
