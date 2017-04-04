@@ -156,14 +156,14 @@ describe("Menu Utils", () => {
 
             let _result = utils.populateCategoryIndices(_menu, _category_config);
 
-            expect(_result[0]).to.have.property('label', 'AAA');
-            expect(_result[0]).to.have.property('menu_indices');
-            expect(_result[0].menu_indices).to.include(0);
-            expect(_result[0].menu_indices).to.include(2);
-
-            expect(_result[1]).to.have.property('label', 'Uncategorised');
+            expect(_result[1]).to.have.property('label', 'AAA');
             expect(_result[1]).to.have.property('menu_indices');
-            expect(_result[1].menu_indices).to.include(1);
+            expect(_result[1].menu_indices).to.include(0);
+            expect(_result[1].menu_indices).to.include(2);
+
+            expect(_result[0]).to.have.property('label', '');
+            expect(_result[0]).to.have.property('menu_indices');
+            expect(_result[0].menu_indices).to.include(1);
         });
     });
 
